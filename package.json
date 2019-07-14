@@ -3,14 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "jest": {
+    "setupTestFrameworkScriptFile":"./tests/setup.js",
+     "verbose": true,
+     "testURL": "http://localhost:3000/"
+  },
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js --ignore tests",
-    "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "yarn run start --prefix client",
+    "dev": "concurrently \"yarn run server\" \"yarn run client\"",
     "build":
       "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "test":"jest"
   },
   "author": "",
   "license": "ISC",
