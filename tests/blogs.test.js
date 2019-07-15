@@ -21,7 +21,7 @@ describe('When logged in', async () => {
     });
 
     test('can see blog create form', async () => {
-        const label = await page.getContentOf('form label');
+        const label = await page.getContentsOf('form label');
         expect(label).toEqual('Blog Title');
     });
 
@@ -33,7 +33,7 @@ describe('When logged in', async () => {
         });
         
         test('Submitting takes user to review screen', async () => {
-            const text = await page.getContentOf('h5');
+            const text = await page.getContentsOf('h5');
             expect(text).toEqual('Please confirm your entries');
         });
 
@@ -41,8 +41,8 @@ describe('When logged in', async () => {
           await page.click('button.green');
           await page.waitFor('.card');
 
-          const title = await page.getContentOf('.card-title');
-          const content = await page.getContentOf('p');
+          const title = await page.getContentsOf('.card-title');
+          const content = await page.getContentsOf('p');
 
           expect(title).toEqual('My Title');
           expect(content).toEqual('My Content'); 
@@ -93,9 +93,9 @@ describe('User is not logged in', async () => {
     // });
 
     test('Blog related actions are prohibited', async () => {
-        const results = await page.execRequests(actions);
+        const results = await page.exceRequests(actions);
 
-        for (let result of resultd) {
+        for (let result of results) {
             expect(result).toEqual({error: 'You must log in!'});
         }
     });
