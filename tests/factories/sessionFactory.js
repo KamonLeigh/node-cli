@@ -9,7 +9,7 @@ const keygrip = new Keygrip([keys.cookieKey]);
 module.exports = user => {
     const sessionObject = {
         passport: {
-            user: user.id.toString(),
+            user: user._id.toString(),
         }
     }
     const session = Buffer.from(JSON.stringify(sessionObject)).toString('base64');
